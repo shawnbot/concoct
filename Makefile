@@ -14,14 +14,15 @@ NIK2IMG ?= nik2img.py -f png -d $(WIDTH) $(HEIGHT) -c $(CENTER) -z $(ZOOM) --bbo
 # BBOX = -122.53 37.82 -122.36 37.70
 # NIK2IMG = nik2img.py -f png -d $(WIDTH) $(HEIGHT) -b $(BBOX) --bbox-factor $(BBOX_FACTOR) --no-open
 
+.PRECIOUS: data/%.shp data/%.csv.vrt channels/%.png channels/%.xml
+
 all: composite.png
 
 composite.png: $(CHANNELS:%=channels/%.png)
 	python concoct.py -o $@ $^
 
 all-channels: $(CHANNELS:%=channels/%.png)
-
-.PRECIOUS: data/%.shp data/%.csv.vrt channels/%.png channels/%.xml
+all-styles: $(CHANNELS:%=channels/%.xml)
 
 channels/%.png: channels/%.xml
 	$(NIK2IMG) $< $@
