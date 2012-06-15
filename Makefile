@@ -1,10 +1,10 @@
 BBOX = -122.53 37.82 -122.36 37.70
-CENTER ?= -122.44 37.758
+CENTER ?= -122.43 37.758
 ZOOM ?= 13
-BBOX_FACTOR = 3.3
+BBOX_FACTOR = 1.5
 
-WIDTH  ?= 3500
-HEIGHT ?= 3200
+WIDTH  ?= 1000
+HEIGHT ?= 1000
 
 # NIK2IMG ?= nik2img.py -f png -d $(WIDTH) $(HEIGHT) -b $(BBOX) --no-open
 NIK2IMG ?= nik2img.py -f png -d $(WIDTH) $(HEIGHT) -c $(CENTER) -z $(ZOOM) --bbox-factor $(BBOX_FACTOR) --no-open
